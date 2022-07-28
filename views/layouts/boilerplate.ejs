@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YelpCamp</title>
+
+    <!-- Starability styles are linked directly from /campgrounds/show.ejs -->
+    <!-- because they're only needed on the show page -->
+
+    <link rel="stylesheet" href="/stylesheets/app.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+    <!-- mapbox -->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.js' crossorigin></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.2/mapbox-gl.css' rel='stylesheet' crossorigin />
+
+</head>
+
+<body class="d-flex flex-column vh-100">
+    <%- include('../partials/navbar') %>
+        <main class="container mt-5">
+
+
+            <%- include('../partials/flash') %>
+                <div class="alert-container"></div>
+                <%- body %>
+                    <!-- <script>
+                        async () => {
+                            const div = await document.querySelector('.alert')
+                            console.log(div)
+                        }
+                    </script> -->
+                    <script>
+                        function tempAlert(msg, duration) {
+                            var el = document.createElement("div");
+                            el.setAttribute("class", "alert alert-success alert-dismissible");
+                            el.setAttribute('role', 'alert');
+                            el.innerHTML = msg;
+                            const container = document.querySelector('.alert-container');
+                            setTimeout(function () {
+                                el.parentNode.removeChild(el);
+                            }, duration);
+                            container.appendChild(el);
+                        }
+                    </script>
+        </main>
+
+        <%- include('../partials/footer') %>
+
+            <!-- Bootstrap Bundle with Popper -->
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+                crossorigin="anonymous"></script>
+
+            <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.min.js">
+                bsCustomFileInput.init()
+            </script>
+
+            <script>
+                const forms = document.getElementsByClassName('novalidated-form');
+
+                Array.from(forms, function (form) {
+                    form.addEventListener('submit', function (event) {
+                        if (!form.checkValidity()) {
+                            event.preventDefault();
+                            event.stopPropagation();
+                        }
+                        form.classList.add('was-validated');
+                    }, false);
+                });
+            </script>
+
+            <!-- <script src="/validateForms.js"></script> -->
+
+
+
+</body>
+
+
+</html>
