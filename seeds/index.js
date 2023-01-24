@@ -4,11 +4,14 @@ const seedHelpers = require('./seedHelpers');
 // const images = require('./images');
 const Campground = require('../models/campground');
 
+const mongoUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
 
-mongoose.connect('mongodb://localhost:27017/yelp-camp', {
+mongoose.connect(mongoUrl, {
     useNewURLParser: true,
     useUnifiedTopology: true
 })
+
+
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
