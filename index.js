@@ -16,6 +16,7 @@ const helmet = require('helmet');
 const MongoDBStore = require('connect-mongo');
 
 const mongoUrl = process.env.DB_URL || 'mongodb://localhost:27017/yelp-camp';
+// const mongoUrl = 'mongodb://localhost:27017/yelp-camp';
 
 //      !MongoDB suggested code!
 // const { MongoClient, ServerApiVersion } = require('mongodb');
